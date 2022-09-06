@@ -30,7 +30,18 @@ public class ToDoListService {
     public Set<ToDoList> list() {
         return toDoLists;
     }
-
+    @GET
+    public Set<ToDoList> listT(title) {
+        if (value.getTitle().equals(element.getTitle())) {
+            return element.getTitle()
+        }else
+            return null
+    }
+    @POST
+    public Set<ToDoList> add(ToDoList element) {
+        toDoLists.add(new ToDoList( this.estado : element));
+        return toDoList;
+    }
     @POST
     public Set<ToDoList> add(ToDoList element) {
         toDoLists.add(element);

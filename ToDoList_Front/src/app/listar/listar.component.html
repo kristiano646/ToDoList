@@ -1,6 +1,6 @@
 <div class="container">
     <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
    
@@ -15,10 +15,14 @@
           <th>Acciones</th>
         </tr>
         <tr>
-          <td>{{obj.id}}</td>
           <td>{{obj.title}} </td>
           <td>{{obj.description}}</td>
-          
+          <td>
+            <select name="estado" > 
+                <option value="0">Done</option>
+                <option value="1">Incomplete</option>
+            </select>
+        </td>
           <td>
             <div class="espacio">
             <a href="#">
@@ -47,19 +51,7 @@
           </a>
         </div>
           </td>
-        </tr>
-        <!-- This is our clonable table line -->
-        <tr class="hide">
-          <td contenteditable="true">Untitled</td>
-          <td contenteditable="true">undefined</td>
-          <td>
-            <span class="table-remove glyphicon glyphicon-remove"></span>
-          </td>
-          <td>
-            <span class="table-up glyphicon glyphicon-arrow-up"></span>
-            <span class="table-down glyphicon glyphicon-arrow-down"></span>
-          </td>
-        </tr>
+        </tr>        
       </table>
     </div>
   

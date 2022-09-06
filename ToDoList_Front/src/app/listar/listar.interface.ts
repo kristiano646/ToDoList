@@ -1,5 +1,6 @@
 export interface Objeto {
     id: number,
     title: string,
-    description: string
+    description: string,
+    estado: string
   }

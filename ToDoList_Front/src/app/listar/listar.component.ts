@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Objeto} from './listar.interface';
-//import { PersonViewerComponent } from './person-viewer.component';
 import { ListarService } from './listar.service';
+import { NGXLogger } from "ngx-logger";
 
 @Component({
   selector: 'app-listar',
@@ -10,13 +10,23 @@ import { ListarService } from './listar.service';
 })
 export class ListarComponent implements OnInit {
   
-  obj!: Objeto ;
-  objs!: Objeto[];
+  obj: Objeto ;
+  objs: Objeto[];
 
-  constructor(private objService: ListarService) { }
+  constructor(
+    private objService: ListarService,
+    private logger: NGXLogger,
+    ) {
+      logger.partialUpdateConfig({ context: 'ListarComponent' });
+   
+   }
 
   ngOnInit(): void {
-    this.listObj();
+    
+  }
+  logWithContext(): void {
+    this.logger.error('Logging from CustomInstanceComponent');
+    this.objService.logWithContext();
   }
 
   private listObj() {
@@ -31,4 +41,22 @@ export class ListarComponent implements OnInit {
       }
     );
   }
+  onUptObjeto(event: Objeto) {
+    this.objService.updateObjeto(event).subscribe(
+      data => {
+        this.obj = Object.assign({}, this.obj, event);
+        this.listObj();
+      }
+    );
+  }
+
+  ondltObjeto(event: Objeto) {
+    this.objService.deleteObjeto(event).subscribe(
+      data => {
+        this.obj = Object.assign({}, this.obj, event);
+        this.listObj();
+      }
+    );
+  }
+  
 }
