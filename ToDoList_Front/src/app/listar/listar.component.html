@@ -1,31 +1,68 @@
-<table class="content-table"> 
-    <thead> 
-    <tr>
-         <th>Nombre</th> 
-         <th>Platillo favorito</th> 
-         <th>Alergias / no le gusta</th> 
-    </tr> 
-    </thead> 
-    <tbody> 
-        <tr> 
-            <td>Emmanuel</td> 
-            <td>Enchiladas</td> 
-            <td>Pasas</td> 
-        </tr> 
+<div class="container">
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+   
+  
+    <div id="table" class="table-editable">
+      <span class="table-add glyphicon glyphicon-plus"></span>
+      <table class="table">
         <tr>
-            <td>Lina</td>
-            <td>Salteñas</td>
-            <td>Aderezos</td>
+          <th>Título</th>
+          <th>Descripción</th>
+          <th>Estado</th>
+          <th>Acciones</th>
         </tr>
-        <tr> 
-            <td>Adrián</td>
-             <td>Berenjenas horneadas</td>
-             <td>Queso</td> 
-        </tr> 
-            <tr> 
-                <td>Yaz</td>
-                <td>Sopa de cebolla</td> 
-                <td>Carnes rojas</td>
-             </tr>
-             </tbody>
-             </table>
+        <tr>
+          <td>{{obj.id}}</td>
+          <td>{{obj.title}} </td>
+          <td>{{obj.description}}</td>
+          
+          <td>
+            <div class="espacio">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+                    <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
+                  </svg>
+            </a> 
+            
+            
+            <a href="#">
+         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+        </svg></a>
+    
+  
+        <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
+            <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414l-3.879-3.879zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
+          </svg></a>
+        
+       
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyeglasses" viewBox="0 0 16 16">
+                <path d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A1.993 1.993 0 0 0 8 6c-.532 0-1.016.208-1.375.547zM14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+              </svg>
+          </a>
+        </div>
+          </td>
+        </tr>
+        <!-- This is our clonable table line -->
+        <tr class="hide">
+          <td contenteditable="true">Untitled</td>
+          <td contenteditable="true">undefined</td>
+          <td>
+            <span class="table-remove glyphicon glyphicon-remove"></span>
+          </td>
+          <td>
+            <span class="table-up glyphicon glyphicon-arrow-up"></span>
+            <span class="table-down glyphicon glyphicon-arrow-down"></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  
+    <button id="export-btn" class="btn btn-primary">Export Data</button>
+    <p id="export"></p>
+  </div>
