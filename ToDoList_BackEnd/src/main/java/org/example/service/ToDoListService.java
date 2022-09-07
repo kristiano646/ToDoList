@@ -12,6 +12,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.HashSet;
 import java.util.Set;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @Path("/to-do-list")
 @Produces(MediaType.APPLICATION_JSON)
@@ -19,6 +34,8 @@ import java.util.Set;
 public class ToDoListService {
 
     private Set<ToDoList> toDoLists = new HashSet<>();
+    Map<String, ToDoList> todoData = new HashMap<String, ToDoList>();
+    private static final Logger logger = LoggerFactory.getLogger(ToDoListService.class);
 
     public ToDoListService() {
         toDoLists.add(new ToDoList("Test1", "desc test1"));
@@ -30,18 +47,39 @@ public class ToDoListService {
     public Set<ToDoList> list() {
         return toDoLists;
     }
-    @GET
-    public Set<ToDoList> listT(title) {
-        if (value.getTitle().equals(element.getTitle())) {
-            return element.getTitle()
-        }else
-            return null
+
+    @RequestMapping(value = EmpRestURIConstants.GET_EMP, method = RequestMethod.GET)
+    public @ResponseBody
+    ToDoList getTitle(@PathVariable("title") String title) {
+        logger.info("Start getTitle. TITLE=" + title);
+
+        return todoData.get(title);
     }
-    @POST
-    public Set<ToDoList> add(ToDoList element) {
-        toDoLists.add(new ToDoList( this.estado : element));
-        return toDoList;
-    }
+    
+    @RequestMapping(value = EmpRestURIConstants.GET_ALL_EMP, method = RequestMethod.GET)
+	public @ResponseBody List<ToDoList> getAllEmployees() {
+		logger.info("Start getAllEmployees.");
+		List<ToDoList> emps = new ArrayList<ToDoList>();
+		Set<String> title = todoData.keySet();
+		for(String i : title){
+			emps.add(todoData.get(i));
+		}
+		return emps;
+	}
+
+//    @GET
+//    public Set<ToDoList> listT(ToDoList title) {  
+//        toDoLists.forEach(value -> {
+//            if (value.getTitle().equals(title.getTitle())) {      
+//            }
+//        });
+//        return toDoLists;
+//    }
+//    @POST
+//    public Set<ToDoList> adde(ToDoList element) {
+//       toDoLists.add(element);
+//       return toDoLists;
+//   }
     @POST
     public Set<ToDoList> add(ToDoList element) {
         toDoLists.add(element);
@@ -63,4 +101,5 @@ public class ToDoListService {
         });
         return toDoLists;
     }
+
 }
